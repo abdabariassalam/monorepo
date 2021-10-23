@@ -1,0 +1,22 @@
+{
+  "users": [
+    {
+      "phone": "81122334455",
+      "name": "admin1",
+      "role": "admin",
+      "password": "asdf"
+    },
+    {
+      "phone": "81132334455",
+      "name": "test1",
+      "role": "reporter",
+      "password": "Kfej"
+    },
+    {
+      "phone": "811322334455",
+      "name": "test1",
+      "role": "reporter",
+      "password": "FFoK"
+    }
+  ]
+}
