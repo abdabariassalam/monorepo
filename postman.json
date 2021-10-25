@@ -1,0 +1,163 @@
+{
+	"info": {
+		"_postman_id": "08424837-a333-4d41-80ca-be738f92ab24",
+		"name": "monorepo",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "js",
+			"item": [
+				{
+					"name": "login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"phone\": \"+6281122334455\",\r\n    \"password\": \"asdf\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8123/auth/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8123",
+							"path": [
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "registrasi",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"phone\": \"+62811322334455\",\r\n    \"name\": \"test1\",\r\n    \"role\": \"reporter\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8123/auth/register",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8123",
+							"path": [
+								"auth",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "verify-token",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-access-token",
+								"value": "",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8123/auth/verify",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8123",
+							"path": [
+								"auth",
+								"verify"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "go",
+			"item": [
+				{
+					"name": "verify-token",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": null
+					},
+					"response": []
+				},
+				{
+					"name": "aggregate",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-access-token",
+								"value": "",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:8080/aggregate",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"aggregate"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "currency-converter",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-access-token",
+								"value": "",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:8080/currency-converter",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"currency-converter"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

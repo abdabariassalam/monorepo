@@ -1,5 +1,12 @@
+base:
+  port: ':8080'
+
 jwt:
   secret_key: 'initasktest'
 
 resource:
   url: 'https://stein.efishery.com/v1/storages/5e1edf521073e315924ceab4/list'
+
+currency_converter:
+  base_url: "https://api.fastforex.io"
+  api_key: "d76dbb83f7-cf5a2a1ec5-r1hv2p"

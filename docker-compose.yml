@@ -1,0 +1,17 @@
+version: '3'
+services:
+  auth-app:
+    build:
+      context: packages/auth
+      dockerfile: Dockerfile
+    ports:
+      - "8123:8123"
+    volumes:
+      - ./packages/db:/db
+
+  fetch-app:
+    build:
+      context: packages/fetch
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"

@@ -1,12 +1,9 @@
 package main
 
 import (
-	"fmt"
-
-	"./cmd/serve"
+	"github.com/bariasabda/monorepo/packages/fetch/cmd/http"
 )
 
 func main() {
-	fmt.Println("hello world")
-	serve.Execute()
+	http.Execute()
 }
