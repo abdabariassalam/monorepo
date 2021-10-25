@@ -12,4 +12,4 @@ VOLUME /db
 
 EXPOSE 8123
 
-CMD [ "node", "server.js" ]
+ENTRYPOINT [ "node", "server.js" ]

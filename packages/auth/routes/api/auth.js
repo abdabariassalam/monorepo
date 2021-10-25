@@ -1,11 +1,17 @@
 const express = require('express');
 const router = express.Router();
-var low = require('lowdb');
-var FileSync = require('lowdb/adapters/FileSync');
-var adapter = new FileSync('./../db/db.json');
-var db = low(adapter);
 const jwt = require("jsonwebtoken");
 var generator = require('generate-password');
+const fs = require("fs");
+var low = require('lowdb');
+var FileSync = require('lowdb/adapters/FileSync');
+if (fs.existsSync('./../db/db.json')) {
+  var adapter = new FileSync('./../db/db.json');
+} else if (fs.existsSync('./packages/db/db.json')) {
+  var adapter = new FileSync('./packages/db/db.json');
+}
+var db = low(adapter);
+
 
 // registrasi user
 router.post('/register', (req, res) => {
@@ -44,14 +50,23 @@ router.post('/register', (req, res) => {
       isSamePass = true 
     }
   }
-  
-  // dump data to database
-  user = db.get("users").push({
-    phone: isPhone,
-    name: name,
-    role: role, 
-    password: generatePassword,
-  }).write();
+  if (process.env.NODE_ENV === 'test') {
+    res.status(201).json({
+      phone: isPhone,
+      name: name,
+      role: role, 
+      password: generatePassword,
+    })
+    return
+  } else {
+    // dump data to database
+    user = db.get("users").push({
+      phone: isPhone,
+      name: name,
+      role: role, 
+      password: generatePassword,
+    }).write();
+  }
 
   // return new user
   res.status(201).json(getUser(isPhone));
@@ -89,10 +104,7 @@ router.post('/login', (req, res) => {
         }
       );
 
-      // save user token
-      user.token = token;
-
-      res.status(200).json(user);
+      res.status(200).json({token:token});
     }else{
       res.status(400).send("Wrong phone or Password");
     }
@@ -103,7 +115,7 @@ router.get('/verify', (req, res) => {
 
   const token = req.headers["x-access-token"];
   if (!token) {
-    return res.status(403).send("A token is required");
+    return res.status(403).send("Token is required");
   }
 
   try {

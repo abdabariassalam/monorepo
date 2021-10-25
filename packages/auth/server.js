@@ -2,7 +2,10 @@ const express = require('express');
 const http = require('http');
 const authHandler = require('./routes/api/auth');
 const app = express();
-require('dotenv').config();
+const fs = require("fs");
+if (!fs.existsSync('./.env')) {
+    require('dotenv').config({ path: './../../.env' });
+} else {require('dotenv').config();}
 
 const server = http.createServer(app);
 
