@@ -32,7 +32,11 @@ func Execute() {
 	handler := NewHandler(service)
 	r := NewRouter(*handler)
 	r.routes()
-	r.router.Run(cfg.Base.Port)
+	port := ":" + os.Getenv("PORT")
+	if port == ":" {
+		port = cfg.Base.Port
+	}
+	r.router.Run(port)
 
 	// Waiting signal
 	interrupt := make(chan os.Signal, 1)
