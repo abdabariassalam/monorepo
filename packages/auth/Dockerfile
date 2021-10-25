@@ -8,7 +8,7 @@ RUN npm install
 
 COPY . .
 
-VOLUME /db
+RUN echo 
 
 EXPOSE 8123
 

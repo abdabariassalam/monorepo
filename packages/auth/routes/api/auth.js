@@ -5,11 +5,7 @@ var generator = require('generate-password');
 const fs = require("fs");
 var low = require('lowdb');
 var FileSync = require('lowdb/adapters/FileSync');
-if (fs.existsSync('./../db/db.json')) {
-  var adapter = new FileSync('./../db/db.json');
-} else if (fs.existsSync('./packages/db/db.json')) {
-  var adapter = new FileSync('./packages/db/db.json');
-}
+var adapter = new FileSync('./db/db.json');
 var db = low(adapter);
 
 
